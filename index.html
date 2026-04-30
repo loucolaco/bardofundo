@@ -25,215 +25,100 @@
         html { scroll-behavior: smooth; }
         body { background-color: var(--sand); color: var(--ink); font-family: 'EB Garamond', serif; font-size: 1.1rem; line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
+        /* Typography */
         .display-italic { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; color: var(--deep-ocean); }
         .label-font { font-family: 'Raleway', sans-serif; text-transform: uppercase; letter-spacing: 0.35em; font-size: 0.65rem; font-weight: 600; color: var(--stone); }
 
-        /* --- NAVIGATION --- */
-        nav#main-nav { 
-            position: fixed; 
-            top: 0; 
-            width: 100%; 
-            z-index: 1000; 
-            padding: 1rem 5%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            transition: var(--transition); 
-        }
+        /* Main Nav */
+        nav#main-nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 2.5rem 5%; display: flex; justify-content: space-between; align-items: center; transition: var(--transition); }
+        nav#main-nav.scrolled { background: rgba(255, 255, 255, 0.98); padding: 1.2rem 5%; border-bottom: 1px solid var(--foam); backdrop-filter: blur(10px); }
+        .logo { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.7rem; color: var(--deep-ocean); text-decoration: none; font-weight: 600; }
         
-        nav#main-nav.scrolled { 
-            background: rgba(255, 255, 255, 0.98); 
-            padding: 0.8rem 5%; 
-            border-bottom: 1px solid var(--foam); 
-            backdrop-filter: blur(10px); 
-        }
-        
-        .logo { 
-            font-family: 'Cormorant Garamond', serif; 
-            font-style: italic; 
-            font-size: 1.1rem; 
-            color: var(--deep-ocean); 
-            text-decoration: none; 
-            font-weight: 600; 
-            flex-shrink: 0;
-        }
-
         .nav-links { display: none; }
+        @media (min-width: 1024px) { .nav-links { display: flex; gap: 3.5rem; align-items: center; } }
+        .nav-links a { text-decoration: none; color: var(--deep-ocean); font-family: 'Raleway', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 500; cursor: pointer; }
         
-        @media (min-width: 1024px) { 
-            .logo { font-size: 1.7rem; }
-            nav#main-nav { padding: 2.5rem 5%; }
-            .nav-links { display: flex; gap: 3.5rem; align-items: center; } 
-        }
-
-        .nav-links a { 
-            text-decoration: none; 
-            color: var(--deep-ocean); 
-            font-family: 'Raleway', sans-serif; 
-            font-size: 0.65rem; 
-            letter-spacing: 0.25em; 
-            text-transform: uppercase; 
-            font-weight: 500; 
-            transition: 0.3s;
-        }
-        
-        .nav-links a:hover { opacity: 0.6; }
-
-        .nav-actions { 
-            display: flex; 
-            align-items: center; 
-            gap: 0.6rem; 
-        }
-
-        .lang-switch { 
-            display: flex; 
-            gap: 0.3rem; 
-            border-left: 1px solid var(--foam); 
-            padding-left: 0.6rem; 
-        }
-
-        .lang-btn { 
-            background: none; 
-            border: none; 
-            font-family: 'Raleway', sans-serif; 
-            font-size: 0.6rem; 
-            font-weight: 700; 
-            cursor: pointer; 
-            color: var(--stone); 
-        }
-
+        .lang-switch { display: flex; gap: 0.5rem; border-left: 1px solid var(--foam); padding-left: 1.5rem; margin-left: 1rem; }
+        .lang-btn { background: none; border: none; font-family: 'Raleway', sans-serif; font-size: 0.6rem; font-weight: 700; cursor: pointer; color: var(--stone); transition: 0.3s; }
         .lang-btn.active { color: var(--deep-ocean); text-decoration: underline; }
 
-        .btn-reserve { 
-            background-color: var(--deep-ocean); 
-            color: white; 
-            padding: 0.6rem 0.9rem; 
-            border: 1px solid var(--deep-ocean); 
-            text-decoration: none; 
-            font-family: 'Raleway', sans-serif; 
-            font-weight: 600; 
-            font-size: 0.55rem; 
-            letter-spacing: 0.1em; 
-            text-transform: uppercase; 
-            transition: var(--transition); 
-            white-space: nowrap;
-        }
+        .btn-reserve { background-color: var(--deep-ocean); color: white; padding: 1rem 2.2rem; border: 1px solid var(--deep-ocean); text-decoration: none; font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; transition: var(--transition); }
+        .btn-reserve:hover { background-color: transparent; color: var(--deep-ocean); transform: translateY(-2px); }
 
-        @media (min-width: 1024px) { 
-            .nav-actions { gap: 1.5rem; }
-            .btn-reserve { padding: 1rem 2.2rem; font-size: 0.65rem; letter-spacing: 0.25em; } 
-            .lang-switch { gap: 0.5rem; padding-left: 1.5rem; }
-            .lang-btn { font-size: 0.65rem; }
-        }
-
-        /* --- HERO --- */
-        #hero { height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; color: white; }
+        /* Hero */
+        #hero { height: 75vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; color: white; }
         #hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); object-fit: cover; z-index: -2; }
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 29, 41, 0.35); z-index: -1; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 29, 41, 0.4); z-index: -1; }
 
-        /* --- SECTIONS --- */
-        section { padding: 80px 8%; }
-        @media (min-width: 1024px) { section { padding: 140px 10%; } }
-        
+        /* Sections */
+        section { padding: 120px 10%; }
         .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1.2s ease, transform 1s cubic-bezier(0.22, 1, 0.36, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         .history-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; }
-        @media (min-width: 1024px) { .history-grid { grid-template-columns: 1fr 1.1fr; } }
-        
-        .history-img-container { width: 100%; aspect-ratio: 4/5; background: var(--foam); overflow: hidden; position: relative; }
-        .history-img-container img { width: 100%; height: 100%; object-fit: cover; transition: 2s scale ease; }
-        .history-img-container:hover img { scale: 1.1; }
+        @media (min-width: 1024px) { .history-grid { grid-template-columns: 1fr 1fr; } }
+        .history-img-container { width: 100%; aspect-ratio: 4/5; background: var(--foam); overflow: hidden; }
+        .history-img-container img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- GALLERY --- */
-        #gallery { background: var(--salt); padding: 80px 5%; }
-        @media (min-width: 1024px) { #gallery { padding: 160px 5%; } }
-        
-        .gallery-wall { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        @media (min-width: 1024px) { .gallery-wall { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 160px; gap: 15px; } }
-        
-        .gallery-item { position: relative; overflow: hidden; background: var(--foam); cursor: pointer; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .gallery-item:hover img { transform: scale(1.1); }
-        
-        .g-tall { grid-row: span 3; }
-        .g-wide { grid-column: span 2; }
-        .g-big { grid-column: span 2; grid-row: span 2; }
-        .g-hero { grid-column: span 3; grid-row: span 3; }
+        /* Gallery */
+        #gallery { background: var(--salt); padding: 160px 5%; }
+        .gallery-wall { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 150px; gap: 15px; }
+        .gallery-item { position: relative; overflow: hidden; background: var(--foam); cursor: crosshair; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.2s ease-out; }
+        .g-tall { grid-row: span 3; } .g-wide { grid-column: span 2; } .g-big { grid-column: span 2; grid-row: span 2; } .g-hero { grid-column: span 3; grid-row: span 3; }
 
-        /* --- MENU --- */
-        #menu-sub-nav { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 4rem; justify-content: center; }
-        .menu-cat-btn { 
-            background: transparent; 
-            border: 1px solid var(--foam); 
-            font-family: 'Raleway', sans-serif; 
-            text-transform: uppercase; 
-            font-size: 0.6rem; 
-            padding: 0.8rem 1.4rem; 
-            border-radius: 50px; 
-            cursor: pointer; 
-            transition: 0.4s; 
-            font-weight: 600; 
-            color: var(--deep-ocean); 
-        }
-        .menu-cat-btn.active { background: var(--deep-ocean); color: white; border-color: var(--deep-ocean); box-shadow: 0 4px 15px rgba(10, 29, 41, 0.2); }
+        /* Menu */
+        #menu-sub-nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 4rem; justify-content: center; }
+        .menu-cat-btn { background: transparent; border: 1px solid var(--foam); font-family: 'Raleway', sans-serif; text-transform: uppercase; font-size: 0.65rem; padding: 0.9rem 1.8rem; border-radius: 50px; cursor: pointer; transition: 0.3s; font-weight: 600; color: var(--deep-ocean); }
+        .menu-cat-btn.active { background: var(--deep-ocean); color: white; }
         
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; min-height: 450px; }
-        .dish-card { border-bottom: 1px solid var(--foam); padding-bottom: 1.8rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; transition: 0.3s; }
-        .dish-card:hover { border-color: var(--stone); }
-        .dish-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--deep-ocean); line-height: 1.2; }
-        .dish-price { font-family: 'Raleway', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--stone); white-space: nowrap; margin-top: 0.4rem; }
+        .marquee-container { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; background: var(--deep-ocean); height: 320px; overflow: hidden; margin-top: 3.5rem; }
+        .marquee-content { display: inline-flex; height: 100%; animation: marquee 45s linear infinite; }
+        .marquee-img { height: 100%; width: 500px; object-fit: cover; }
 
-        /* --- MARQUEE --- */
-        .marquee-container { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; background: var(--deep-ocean); height: 350px; overflow: hidden; margin-top: 6rem; }
-        .marquee-content { display: inline-flex; height: 100%; animation: marquee 50s linear infinite; }
-        .marquee-img { height: 100%; width: 500px; object-fit: cover; filter: grayscale(0.1) contrast(1.05); }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; min-height: 400px; }
+        .dish-card { border-bottom: 1px solid var(--foam); padding-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+        .dish-name { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-style: italic; color: var(--deep-ocean); line-height: 1.2; }
+        .dish-price { font-family: 'Raleway', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--stone); white-space: nowrap; margin-top: 0.4rem; }
+
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* --- FOOTER --- */
-        footer { background: var(--salt); padding: 100px 8% 40px; border-top: 1px solid var(--foam); }
-        .footer-link { text-decoration: none; color: inherit; transition: 0.3s; display: block; margin-bottom: 0.6rem; font-size: 0.95rem; }
-        .footer-link:hover { color: var(--atlantic); text-decoration: underline; }
-        .social-box { margin-top: 2rem; display: flex; gap: 1.5rem; }
-        .social-icon { color: var(--deep-ocean); transition: 0.4s; }
-        .social-icon:hover { transform: translateY(-5px); opacity: 0.7; }
-        .social-icon svg { width: 24px; height: 24px; stroke: currentColor; stroke-width: 1.2; fill: none; }
+        /* Footer */
+        footer { background: var(--salt); padding: 100px 10% 40px; border-top: 1px solid var(--foam); }
+        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s ease; display: block; margin-bottom: 0.5rem; }
+        .footer-link:hover { color: var(--atlantic); }
+        .social-box { margin-top: 1.5rem; display: flex; gap: 1.5rem; }
+        .social-icon { color: var(--deep-ocean); transition: transform 0.3s ease, opacity 0.3s; text-decoration: none; display: flex; align-items: center; }
+        .social-icon:hover { transform: translateY(-3px); opacity: 0.7; }
+        .social-icon svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
     </style>
 </head>
 <body>
 
     <nav id="main-nav">
         <a href="#" class="logo">Bar do Fundo</a>
-        
         <div class="nav-links">
             <a href="#hero" class="t" data-pt="Início" data-en="Home">Início</a>
             <a href="#history" class="t" data-pt="História" data-en="History">História</a>
             <a href="#gallery" class="t" data-pt="Galeria" data-en="Gallery">Galeria</a>
             <a href="#menu" class="t" data-pt="O Menu" data-en="The Menu">O Menu</a>
-        </div>
-
-        <div class="nav-actions">
             <div class="lang-switch">
                 <button class="lang-btn active" onclick="setLang('pt')">PT</button>
                 <button class="lang-btn" onclick="setLang('en')">EN</button>
             </div>
-            <a href="https://reservation.umai.io/pt/widget/bar-do-fundo?date=2026-04-30&party_size=2" target="_blank" class="btn-reserve t" data-pt="Reservar" data-en="Reserve">Reservar</a>
         </div>
+        <a href="https://reservation.umai.io/pt/widget/bar-do-fundo?date=2026-04-30&party_size=2" target="_blank" class="btn-reserve t" data-pt="Reservar" data-en="Reserve">Reservar</a>
     </nav>
 
     <section id="hero">
-        <video autoplay muted loop playsinline id="hero-video">
-            <source src="bar2.mp4" type="video/mp4">
-        </video>
+        <video autoplay muted loop playsinline id="hero-video"><source src="bar2.mp4" type="video/mp4"></video>
         <div class="hero-overlay"></div>
         <div class="reveal">
             <span class="label-font" style="color: white; opacity: 0.9;">Praia Grande · Sintra</span>
             <h1 class="display-italic t" id="hero-title" 
                 data-pt="Onde o Mar<br>se encontra com a Mesa" 
                 data-en="Where the Sea<br>meets the Table" 
-                style="font-size: clamp(2.8rem, 8vw, 6.5rem); color: white; margin-top: 1.5rem; line-height: 1.1; letter-spacing: -0.02em;">
-                Onde o Mar<br>se encontra com a Mesa
-            </h1>
+                style="font-size: clamp(3rem, 8vw, 6rem); color: white; margin-top: 1rem;">Onde o Mar<br>se encontra com a Mesa</h1>
         </div>
     </section>
 
@@ -241,24 +126,22 @@
         <div class="history-grid">
             <div class="reveal">
                 <span class="label-font t" data-pt="A Nossa Herança" data-en="Our Heritage">A Nossa Herança</span>
-                <h2 class="display-italic t" data-pt="Uma História de Mar e Sal" data-en="A Story of Sea and Salt" style="font-size: clamp(2.5rem, 5vw, 4rem); margin: 2rem 0; line-height: 1.2;">Uma História de Mar e Sal</h2>
+                <h2 class="display-italic t" data-pt="Uma História de Mar e Sal" data-en="A Story of Sea and Salt" style="font-size: 3.5rem; margin: 1.5rem 0;">Uma História de Mar e Sal</h2>
                 <div id="history-text" class="t" 
-                    data-pt='<p style="margin-bottom: 1.8rem; color: var(--stone);">Entre o mar e a serra de Sintra nasceu o Bar do Fundo, um lugar pensado para abrandar o tempo e celebrar o prazer simples de estar à mesa. Inspirado pela beleza natural da Praia Grande, o espaço surgiu com a vontade de criar mais do que um restaurante: um refúgio junto ao Atlântico, onde cada refeição pudesse ter o sabor da costa, da partilha e dos dias passados sem pressa.</p><p style="margin-bottom: 1.8rem; color: var(--stone);">Desde a sua origem, o Bar do Fundo construiu a sua identidade em torno da frescura dos produtos, da proximidade ao oceano e da autenticidade da cozinha portuguesa. Peixe, marisco, pratos tradicionais e sabores cuidadosamente preparados dão forma a uma experiência que respeita o lugar onde nasce.</p><p style="color: var(--stone);">Hoje, o Bar do Fundo continua a ser um convite a viver Sintra de forma sensorial: sentir a brisa salgada, ouvir o mar ao fundo, brindar ao pôr do sol e reunir pessoas à volta da mesa.</p>'
-                    data-en='<p style="margin-bottom: 1.8rem; color: var(--stone);">Between the sea and the Sintra mountains, Bar do Fundo was born, a place designed to slow down time and celebrate the simple pleasure of being at the table. Inspired by the natural beauty of Praia Grande, the space emerged with the desire to create more than a restaurant: a refuge by the Atlantic.</p><p style="margin-bottom: 1.8rem; color: var(--stone);">Since its origin, Bar do Fundo built its identity around freshness and the authenticity of Portuguese cuisine. Fish, seafood, and traditional dishes shape an experience that respects its birthplace.</p><p style="color: var(--stone);">Today, Bar do Fundo remains an invitation to experience Sintra sensorially: feeling the salty breeze, hearing the sea, and gathering people around the table.</p>'>
+                    data-pt='<p style="margin-bottom: 1.5rem; color: var(--stone);">Entre o mar e a serra de Sintra nasceu o Bar do Fundo, um lugar pensado para abrandar o tempo e celebrar o prazer simples de estar à mesa. Inspirado pela beleza natural da Praia das Maçãs, o espaço surgiu com a vontade de criar mais do que um restaurante: um refúgio junto ao Atlântico, onde cada refeição pudesse ter o sabor da costa, da partilha e dos dias passados sem pressa.</p><p style="margin-bottom: 1.5rem; color: var(--stone);">Desde a sua origem, o Bar do Fundo construiu a sua identidade em torno da frescura dos produtos, da proximidade ao oceano e da autenticidade da cozinha portuguesa. Peixe, marisco, pratos tradicionais e sabores cuidadosamente preparados dão forma a uma experiência que respeita o lugar onde nasce — uma cozinha ligada ao mar, mas servida com alma, detalhe e hospitalidade.</p><p style="color: var(--stone);">Hoje, o Bar do Fundo continua a ser um convite a viver Sintra de forma sensorial: sentir a brisa salgada, ouvir o mar ao fundo, brindar ao pôr do sol e reunir pessoas à volta da mesa. É essa combinação entre paisagem, sabor e memória que transforma cada visita numa experiência simples, elegante e inesquecível.</p>'
+                    data-en='<p style="margin-bottom: 1.5rem; color: var(--stone);">Between the sea and the Sintra mountains, Bar do Fundo was born, a place designed to slow down time and celebrate the simple pleasure of being at the table. Inspired by the natural beauty of Praia das Maçãs, the space emerged with the desire to create more than a restaurant: a refuge by the Atlantic, where every meal could taste of the coast, sharing, and days spent without haste.</p><p style="margin-bottom: 1.5rem; color: var(--stone);">From its origin, Bar do Fundo built its identity around product freshness, proximity to the ocean, and the authenticity of Portuguese cuisine. Fish, seafood, traditional dishes, and carefully prepared flavors shape an experience that respects its birthplace — a cuisine connected to the sea, served with soul, detail, and hospitality.</p><p style="color: var(--stone);">Today, Bar do Fundo remains an invitation to experience Sintra sensorially: feeling the salty breeze, hearing the sea in the background, toasting the sunset, and gathering people around the table. It is this combination of landscape, flavor, and memory that transforms every visit into a simple, elegant, and unforgettable experience.</p>'>
                 </div>
             </div>
             <div class="reveal">
-                <div class="history-img-container">
-                    <img src="hist1.jpg" alt="Bar do Fundo Exterior">
-                </div>
+                <div class="history-img-container"><img src="hist1.jpg" alt="História"></div>
             </div>
         </div>
     </section>
 
     <section id="gallery">
-        <div class="reveal" style="text-align: center; margin-bottom: 6rem;">
+        <div class="reveal" style="text-align: center; margin-bottom: 5rem;">
             <span class="label-font t" data-pt="Galeria" data-en="Gallery">Galeria</span>
-            <h2 class="display-italic t" data-pt="Fragmentos do Atlântico" data-en="Atlantic Fragments" style="font-size: clamp(2.2rem, 5vw, 3.5rem);">Fragmentos do Atlântico</h2>
+            <h2 class="display-italic t" data-pt="Fragmentos do Atlântico" data-en="Atlantic Fragments" style="font-size: 3rem;">Fragmentos do Atlântico</h2>
         </div>
         <div class="gallery-wall reveal" id="gallery-grid"></div>
     </section>
@@ -266,160 +149,224 @@
     <section id="menu">
         <div class="reveal" style="text-align: center;">
             <span class="label-font t" data-pt="O Menu" data-en="The Menu">O Menu</span>
-            <h2 class="display-italic t" data-pt="Sinfonia de Sabores" data-en="Flavor Symphony" style="font-size: clamp(2.5rem, 5vw, 3.8rem); margin-bottom: 4rem;">Sinfonia de Sabores</h2>
+            <h2 class="display-italic t" data-pt="Sinfonia de Sabores" data-en="Flavor Symphony" style="font-size: 3.5rem; margin-bottom: 3rem;">Sinfonia de Sabores</h2>
         </div>
-        
         <nav id="menu-sub-nav" class="reveal"></nav>
-        
-        <div id="menu-display" class="reveal">
-            <div class="menu-grid" id="menu-items-container"></div>
-        </div>
+        <div id="menu-display" class="reveal"><div class="menu-grid" id="menu-items-container"></div></div>
+        <div class="marquee-container reveal"><div class="marquee-content" id="marquee-items"></div></div>
+    </section>
 
-        <div class="marquee-container reveal">
-            <div class="marquee-content" id="marquee-items"></div>
+    <section id="reservation">
+        <div style="text-align: center;" class="reveal">
+            <h2 class="display-italic t" data-pt="Um horizonte de sabores." data-en="A horizon of flavors." style="font-size: 3rem;">Um horizonte de sabores.</h2>
+            <a href="https://reservation.umai.io/pt/widget/bar-do-fundo?date=2026-04-30&party_size=2" target="_blank" class="btn-reserve t" data-pt="Fazer Reserva" data-en="Make Reservation" style="display: inline-block; margin-top: 3rem;">Fazer Reserva</a>
         </div>
     </section>
 
     <footer>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 5rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem;">
             <div>
-                <a href="#" class="logo" style="font-size: 1.8rem;">Bar do Fundo</a>
-                <p style="margin-top: 1.5rem; color: var(--stone); font-size: 0.9rem; max-width: 300px;">Uma experiência gastronómica onde o oceano dita o ritmo e a mesa celebra a vida.</p>
+                <span class="logo">Bar do Fundo</span>
                 <div class="social-box">
-                    <a href="https://www.facebook.com/BardoFundo" target="_blank" class="social-icon"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-                    <a href="https://www.instagram.com/bardofundo" target="_blank" class="social-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                    <a href="https://www.facebook.com/BardoFundo" target="_blank" class="social-icon" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://www.instagram.com/bardofundo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-icon" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
                 </div>
             </div>
             <div>
-                <p class="label-font t" data-pt="Contactos" data-en="Contacts" style="margin-bottom: 1.5rem;">Contactos</p>
+                <p class="label-font t" data-pt="Contactos" data-en="Contacts" style="margin-bottom: 0.5rem;">Contactos</p>
                 <a href="tel:+351219282092" class="footer-link">21 928 2092</a>
                 <a href="mailto:bardofundo@gmail.com" class="footer-link">bardofundo@gmail.com</a>
             </div>
             <div>
-                <p class="label-font t" data-pt="Localização" data-en="Location" style="margin-bottom: 1.5rem;">Localização</p>
-                <a href="https://maps.app.goo.gl/3Jq9p7X6e2w6A3zT9" target="_blank" class="footer-link">
-                    Avenida Alfredo Coelho, Praia Grande<br>
-                    2705-329 Colares, Sintra<br>
-                    Portugal
+                <p class="label-font t" data-pt="Localização" data-en="Location" style="margin-bottom: 0.5rem;">Localização</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Avenida+Alfredo+Coelho+Bar+do+Fundo+Sintra+Portugal+2705" target="_blank" class="footer-link">
+                    Avenida Alfredo Coelho, Bar do Fundo<br>Sintra, Portugal, 2705
                 </a>
             </div>
             <div>
-                <p class="label-font t" data-pt="Horário" data-en="Hours" style="margin-bottom: 1.5rem;">Horário</p>
-                <p style="font-size: 1rem;">12:30 – 22:30</p>
-                <p class="t" data-pt="Segunda a Domingo" data-en="Monday to Sunday" style="font-size: 0.85rem; color: var(--stone); margin-top: 0.5rem;">Segunda a Domingo</p>
+                <p class="label-font t" data-pt="Horário" data-en="Hours" style="margin-bottom: 0.5rem;">Horário</p>
+                <p class="t" data-pt="Segunda a Domingo" data-en="Monday to Sunday">Segunda a Domingo</p>
+                <p>12:30 – 22:30</p>
             </div>
         </div>
-        <div style="border-top: 1px solid var(--foam); margin-top: 6rem; padding-top: 2rem; display: flex; justify-content: space-between; align-items: center;" class="label-font">
-            <span>© 2026 Bar do Fundo</span>
-            <div style="display: flex; gap: 2rem;">
-                <span class="t" data-pt="Privacidade" data-en="Privacy">Privacidade</span>
-                <span class="t" data-pt="Termos" data-en="Terms">Termos</span>
-            </div>
-        </div>
+        <div style="border-top: 1px solid rgba(0,0,0,0.05); margin-top: 5rem; padding-top: 2rem;" class="label-font">© 2026 Bar do Fundo</div>
     </footer>
 
     <script>
         let currentLang = 'pt';
-        
         const menuData = {
             pt: {
                 "Pratos do dia": [
                     {n: "Risotto de alcachofra e dourada", p: "25,00€"},
                     {n: "Peixe frito com açorda", p: "20,00€"},
-                    {n: "Cozido à portuguesa (Fim de semana)", p: "70,00€/kg"},
-                    {n: "Feijoada de búzios", p: "22,50€"}
+                    {n: "Cozido à portuguesa", p: "70,00€/kg"}
                 ],
                 "Sopas": [
-                    {n: "Sopa de legumes da época", p: "3,50€"},
-                    {n: "Sopa de peixe rica", p: "8,50€"},
-                    {n: "Sopa de tomate com ovo escalfado", p: "5,00€"}
+                    {n: "Sopa de legumes", p: "3,00€"},
+                    {n: "Sopa de peixe", p: "8,00€"},
+                    {n: "Sopa de tomate com ovo escalfado", p: "4,50€"}
                 ],
                 "Entradas": [
-                    {n: "Couvert (Pão, manteiga, azeitonas)", p: "4,50€"},
-                    {n: "Carpaccio de novilho com parmesão", p: "14,00€"},
-                    {n: "Presunto Pata Negra", p: "16,00€"},
-                    {n: "Coração de alcachofra com trufa", p: "12,50€"},
-                    {n: "Queijo de Azeitão DOP", p: "7,50€"}
+                    {n: "Pão", p: "2,00€"},
+                    {n: "Couvert", p: "4,50€"},
+                    {n: "Carpaccio de novilho", p: "13,00€"},
+                    {n: "Presunto pata negra", p: "9,00€"},
+                    {n: "Coração de alcachofra com presunto, ovo e azeite de trufa", p: "12,00€"},
+                    {n: "Cogumelos salteados", p: "6,00€"},
+                    {n: "Endívias com queijo roquefort, nozes e pera", p: "15,00€"}
+                ],
+                "Saladas": [
+                    {n: "Salada de polvo", p: "18,00€"},
+                    {n: "Salada de queijo de cabra", p: "16,00€"},
+                    {n: "Ceviche de atum ou peixe branco", p: "25,00€"}
                 ],
                 "Marisco": [
-                    {n: "Gambas al ajillo", p: "15,50€"},
-                    {n: "Amêijoas à Bulhão Pato", p: "18,00€"},
-                    {n: "Percebes da Praia Grande", p: "Preço do dia"},
-                    {n: "Sapateira recheada", p: "35,00€/kg"}
-                ],
-                "Peixe": [
-                    {n: "Polvo à Lagareiro", p: "26,00€"},
-                    {n: "Bacalhau com crosta de broa", p: "22,00€"},
-                    {n: "Risotto de Lavagante", p: "38,00€"},
-                    {n: "Peixe fresco do dia (Grelhado)", p: "Sob consulta"},
-                    {n: "Arroz de Marisco (2 pessoas)", p: "55,00€"}
-                ],
-                "Carne": [
-                    {n: "Bife do Lombo Bar do Fundo", p: "27,50€"},
-                    {n: "Posta de Mirandesa", p: "24,00€"},
-                    {n: "Bife Tártaro clássico", p: "21,00€"},
-                    {n: "Costeletinhas de borrego", p: "23,00€"}
+                    {n: "Gambas al ajillo", p: "14,00€"},
+                    {n: "Mexilhão à espanhola", p: "15,00€"},
+                    {n: "Amêijoas à Bulhão Pato", p: "15,00€"},
+                    {n: "Percebes da costa", p: "115,00€/kg"},
+                    {n: "Percebes de mergulho", p: "150,00€/kg"},
+                    {n: "Gamba do Algarve ao natural (200g)", p: "28,00€"},
+                    {n: "Casco de sapateira recheado", p: "14,00€"},
+                    {n: "Ostras (unidade)", p: "3,00€"},
+                    {n: "Carabineiros (200g)", p: "28,00€"},
+                    {n: "Camarão tigre", p: "Sob consulta"}
                 ],
                 "Vegetariano": [
-                    {n: "Risotto de cogumelos silvestres", p: "16,50€"},
-                    {n: "Tagliatelle com vegetais grelhados", p: "14,50€"},
-                    {n: "Caril de grão e espinafres", p: "15,00€"}
+                    {n: "Risotto de cogumelos e espargos", p: "15,00€"},
+                    {n: "Caril de beringela com grão-de-bico", p: "14,00€"},
+                    {n: "Spaghetti piccante vegetariano", p: "15,00€"}
+                ],
+                "Peixe": [
+                    {n: "Risotto de lavagante", p: "35,00€"},
+                    {n: "Polvo à lagareiro", p: "25,00€"},
+                    {n: "Bife de atum à Bar do Fundo", p: "20,00€"},
+                    {n: "Bacalhau à Brás", p: "15,00€"},
+                    {n: "Spaghetti alle vongole e cozze", p: "19,50€"},
+                    {n: "Bacalhau à lagareiro", p: "22,50€"},
+                    {n: "Tranche de corvina com arroz de coentros", p: "25,00€"},
+                    {n: "Moqueca de camarão", p: "18,00€"},
+                    {n: "Peixe Grelha: Robalo/Dourada/Linguado", p: "70,00€/kg"},
+                    {n: "Peixe Grelha: Cantaril/Corvina", p: "65,00€/kg"},
+                    {n: "Cataplana Peixe/Marisco (2 pax)", p: "60,00€"}
+                ],
+                "Carne": [
+                    {n: "Bife do lombo à Bar do Fundo", p: "26,00€"},
+                    {n: "Bife do lombo Café de Paris", p: "26,00€"},
+                    {n: "Bitoque", p: "16,00€"},
+                    {n: "Bife tártaro com batatas fritas", p: "20,00€"},
+                    {n: "Bochechas de porco preto com gnocchis", p: "18,00€"},
+                    {n: "Entrecôte maturado 30 dias (2 pax)", p: "48,00€"}
                 ],
                 "Sobremesas": [
-                    {n: "Cheesecake de frutos vermelhos", p: "6,50€"},
-                    {n: "Mousse de chocolate belga", p: "5,50€"},
-                    {n: "Tarte de maçã de Alcobaça", p: "6,00€"},
-                    {n: "Pudim Abade de Priscos", p: "7,00€"}
+                    {n: "Cheesecake de framboesa e amêndoa", p: "5,50€"},
+                    {n: "Affogato", p: "4,50€"},
+                    {n: "Tarte de amêndoa 'A Tarte'", p: "5,50€"},
+                    {n: "Mousse praliné de chocolate", p: "5,00€"},
+                    {n: "Bolo de chocolate", p: "4,50€"},
+                    {n: "Tarte de limão merengado", p: "5,50€"},
+                    {n: "Bolo basco", p: "5,00€"},
+                    {n: "Bola de gelado Bar do Fundo", p: "6,00€"}
+                ],
+                "Bebidas": [
+                    {n: "Vinho a copo", p: "4,50€"},
+                    {n: "Sangria (1L)", p: "18,00€"},
+                    {n: "Sangria espumante", p: "22,00€"},
+                    {n: "Mojito / Caipirinha", p: "8,00€"},
+                    {n: "Moscow Mule", p: "7,00€"},
+                    {n: "Expresso Martini", p: "8,00€"},
+                    {n: "Porto Tonic", p: "9,00€"},
+                    {n: "Gin (seleção)", p: "Desde 7,00€"},
+                    {n: "Digestivos", p: "Desde 3,50€"}
                 ]
             },
             en: {
                 "Daily Specials": [
-                    {n: "Artichoke and sea bream risotto", p: "25.00€"},
-                    {n: "Fried fish with bread stew", p: "20.00€"},
-                    {n: "Portuguese stew (Weekend)", p: "70.00€/kg"},
-                    {n: "Whelk stew with beans", p: "22.50€"}
+                    {n: "Artichoke and seabream risotto", p: "25,00€"},
+                    {n: "Fried fish with bread stew", p: "20,00€"},
+                    {n: "Portuguese stew (Cozido)", p: "70,00€/kg"}
                 ],
                 "Soups": [
-                    {n: "Seasonal vegetable soup", p: "3.50€"},
-                    {n: "Rich fish soup", p: "8.50€"},
-                    {n: "Tomato soup with poached egg", p: "5.00€"}
+                    {n: "Vegetable soup", p: "3,00€"},
+                    {n: "Fish soup", p: "8,00€"},
+                    {n: "Tomato soup with poached egg", p: "4,50€"}
                 ],
                 "Starters": [
-                    {n: "Couvert (Bread, butter, olives)", p: "4.50€"},
-                    {n: "Beef carpaccio with parmesan", p: "14.00€"},
-                    {n: "Pata Negra ham", p: "16.00€"},
-                    {n: "Artichoke heart with truffle", p: "12.50€"},
-                    {n: "Azeitão Cheese DOP", p: "7.50€"}
+                    {n: "Bread", p: "2,00€"},
+                    {n: "Couvert", p: "4,50€"},
+                    {n: "Beef carpaccio", p: "13,00€"},
+                    {n: "Pata Negra ham", p: "9,00€"},
+                    {n: "Artichoke heart with ham and truffle", p: "12,00€"},
+                    {n: "Sauteed mushrooms", p: "6,00€"},
+                    {n: "Endives with roquefort and walnuts", p: "15,00€"}
+                ],
+                "Salads": [
+                    {n: "Octopus salad", p: "18,00€"},
+                    {n: "Goat cheese salad", p: "16,00€"},
+                    {n: "Tuna or white fish ceviche", p: "25,00€"}
                 ],
                 "Seafood": [
-                    {n: "Garlic prawns", p: "15.50€"},
-                    {n: "Clams Bulhão Pato style", p: "18.00€"},
-                    {n: "Praia Grande Barnacles", p: "Market price"},
-                    {n: "Stuffed crab", p: "35.00€/kg"}
-                ],
-                "Fish": [
-                    {n: "Roasted Octopus 'Lagareiro'", p: "26.00€"},
-                    {n: "Codfish with cornbread crust", p: "22.00€"},
-                    {n: "Lobster Risotto", p: "38.00€"},
-                    {n: "Fresh fish of the day (Grilled)", p: "On request"},
-                    {n: "Seafood Rice (2 persons)", p: "55.00€"}
-                ],
-                "Meat": [
-                    {n: "Bar do Fundo Sirloin Steak", p: "27.50€"},
-                    {n: "Mirandesa Veal Steak", p: "24.00€"},
-                    {n: "Classic Steak Tartare", p: "21.00€"},
-                    {n: "Lamb chops with herbs", p: "23.00€"}
+                    {n: "Garlic prawns", p: "14,00€"},
+                    {n: "Spanish style mussels", p: "15,00€"},
+                    {n: "Bulhão Pato clams", p: "15,00€"},
+                    {n: "Coastal barnacles", p: "115,00€/kg"},
+                    {n: "Diving barnacles", p: "150,00€/kg"},
+                    {n: "Algarve prawns (200g)", p: "28,00€"},
+                    {n: "Stuffed crab shell", p: "14,00€"},
+                    {n: "Oysters (unit)", p: "3,00€"},
+                    {n: "Scarlet prawns (200g)", p: "28,00€"},
+                    {n: "Tiger shrimp", p: "On request"}
                 ],
                 "Vegetarian": [
-                    {n: "Wild mushroom risotto", p: "16.50€"},
-                    {n: "Tagliatelle with grilled vegetables", p: "14.50€"},
-                    {n: "Chickpea and spinach curry", p: "15.00€"}
+                    {n: "Mushroom and asparagus risotto", p: "15,00€"},
+                    {n: "Eggplant curry with chickpeas", p: "14,00€"},
+                    {n: "Vegetarian spicy spaghetti", p: "15,00€"}
+                ],
+                "Fish": [
+                    {n: "Lobster risotto", p: "35,00€"},
+                    {n: "Roasted octopus", p: "24,50€"},
+                    {n: "Bar do Fundo tuna steak", p: "20,00€"},
+                    {n: "Bacalhau à Brás", p: "15,00€"},
+                    {n: "Clam and mussel spaghetti", p: "19,50€"},
+                    {n: "Lagareiro style codfish", p: "22,50€"},
+                    {n: "Corvina fillet with coriander rice", p: "25,00€"},
+                    {n: "Shrimp Moqueca", p: "18,00€"},
+                    {n: "Grilled Fish: Sea Bass/Bream/Sole", p: "70,00€/kg"},
+                    {n: "Grilled Fish: Red Snapper/Corvina", p: "65,00€/kg"},
+                    {n: "Fish and Seafood Cataplana (2 pax)", p: "60,00€"}
+                ],
+                "Meat": [
+                    {n: "Bar do Fundo sirloin steak", p: "26,00€"},
+                    {n: "Café de Paris steak", p: "26,00€"},
+                    {n: "Bitoque", p: "16,00€"},
+                    {n: "Steak tartare with fries", p: "20,00€"},
+                    {n: "Pork cheeks with gnocchi", p: "18,00€"},
+                    {n: "30-day aged Entrecôte (2 pax)", p: "48,00€"}
                 ],
                 "Desserts": [
-                    {n: "Red fruit cheesecake", p: "6.50€"},
-                    {n: "Belgian chocolate mousse", p: "5.50€"},
-                    {n: "Alcobaça apple tart", p: "6.00€"},
-                    {n: "Abade de Priscos Pudding", p: "7.00€"}
+                    {n: "Raspberry and almond cheesecake", p: "5,50€"},
+                    {n: "Affogato", p: "4,50€"},
+                    {n: "Almond tart 'A Tarte'", p: "5,50€"},
+                    {n: "Chocolate praline mousse", p: "5,00€"},
+                    {n: "Chocolate cake", p: "4,50€"},
+                    {n: "Lemon meringue tart", p: "5,50€"},
+                    {n: "Basque cake", p: "5,00€"},
+                    {n: "Bar do Fundo ice cream scoop", p: "6,00€"}
+                ],
+                "Drinks": [
+                    {n: "Wine by the glass", p: "4,50€"},
+                    {n: "Sangria (1L)", p: "18,00€"},
+                    {n: "Sparkling sangria", p: "22,00€"},
+                    {n: "Mojito / Caipirinha", p: "8,00€"},
+                    {n: "Moscow Mule", p: "7,00€"},
+                    {n: "Espresso Martini", p: "8,00€"},
+                    {n: "Porto Tonic", p: "9,00€"},
+                    {n: "Gin selection", p: "From 7,00€"},
+                    {n: "Digestifs", p: "From 3,50€"}
                 ]
             }
         };
@@ -447,36 +394,39 @@
             const container = document.getElementById('menu-items-container');
             document.querySelectorAll('.menu-cat-btn').forEach(b => b.classList.toggle('active', b.innerText === cat));
             container.innerHTML = menuData[currentLang][cat].map(item => 
-                `<div class="dish-card">
-                    <span class="dish-name">${item.n}</span>
-                    <span class="dish-price">${item.p}</span>
-                </div>`
+                `<div class="dish-card"><span class="dish-name">${item.n}</span><span class="dish-price">${item.p}</span></div>`
             ).join('');
         }
 
         function initMarquee() {
             const marquee = document.getElementById('marquee-items');
-            // Usando placeholders para garantir que o código funciona, substitua pelos nomes reais das fotos
-            const images = ['bb1.jpg', 'bb2.jpg', 'bb3.jpg', 'bb4.jpg', 'bb1.jpg', 'bb2.jpg']; 
-            const content = images.map(img => `<img src="${img}" class="marquee-img" onerror="this.src='https://via.placeholder.com/500x350/0A1D29/FFFFFF?text=Bar+do+Fundo'">`).join('');
-            marquee.innerHTML = content + content; 
+            const content = Array.from({length:15}, (_,i)=> `<img src="bb${i+1}.jpg" class="marquee-img">`).join('');
+            marquee.innerHTML = content + content;
         }
 
         function initGallery() {
             const grid = document.getElementById('gallery-grid');
-            const classes = ['g-hero', 'g-tall', 'g-big', '', 'g-wide', '', 'g-tall', 'g-big', 'g-wide', '', '', ''];
-            grid.innerHTML = Array.from({length: 12}, (_, i) => {
+            const classes = ['g-hero', 'g-tall', 'g-big', '', 'g-wide', '', 'g-tall', 'g-big', '', 'g-wide', '', ''];
+            grid.innerHTML = Array.from({length:20}, (_,i)=> {
                 const cls = classes[i % classes.length];
-                return `<div class="gallery-item ${cls}"><img src="gal${(i%6)+1}.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/800x1000/F9FBFC/0A1D29?text=Praia+Grande'"></div>`;
+                return `<div class="gallery-item ${cls}"><img src="gal${i+1}.jpg" loading="lazy"></div>`;
             }).join('');
+            
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('mousemove', (e) => {
+                    const img = item.querySelector('img');
+                    const rect = item.getBoundingClientRect();
+                    img.style.transformOrigin = `${((e.clientX - rect.left)/rect.width)*100}% ${((e.clientY - rect.top)/rect.height)*100}%`;
+                    img.style.transform = "scale(1.2)";
+                });
+                item.addEventListener('mouseleave', () => {
+                    item.querySelector('img').style.transform = "scale(1)";
+                });
+            });
         }
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { 
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active'); 
-                }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
 
         window.onload = () => {
@@ -487,9 +437,7 @@
         };
 
         window.addEventListener('scroll', () => {
-            const nav = document.getElementById('main-nav');
-            if (window.scrollY > 80) nav.classList.add('scrolled');
-            else nav.classList.remove('scrolled');
+            document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 80);
         });
     </script>
 </body>
